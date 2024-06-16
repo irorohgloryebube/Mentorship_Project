@@ -1,0 +1,86 @@
+2024-06-13 19:10:24,389 - INFO - Script started.
+2024-06-13 19:10:24,389 - INFO - Attempting to connect to the database for executing SQL.
+2024-06-13 19:10:24,439 - INFO - Executing query: 
+CREATE TABLE dbo.CustomerFeedback (
+  FeedbackID INT PRIMARY KEY,
+  CustomerID INT NOT NULL,
+  FeedbackDate DATE NOT NULL,
+  Comments VARCHAR(300)
+);
+  
+2024-06-13 19:10:24,447 - ERROR - Error executing query: ('42S01', "[42S01] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]There is already an object named 'CustomerFeedback' in the database. (2714) (SQLExecDirectW)")
+2024-06-13 19:10:24,447 - INFO - Database connection closed after executing SQL.
+2024-06-13 19:10:24,453 - INFO - SQL query executed successfully
+2024-06-13 19:10:24,453 - INFO - Attempting to connect to the database for uploading data.
+2024-06-13 19:10:24,475 - INFO - Uploading data to table: CustomerFeedback
+2024-06-13 19:10:24,637 - INFO - Data uploaded successfully to CustomerFeedback.
+2024-06-13 19:10:24,637 - INFO - Data uploaded successfully
+2024-06-13 19:10:24,637 - INFO - Attempting to connect to the database for executing SQL.
+2024-06-13 19:10:24,645 - INFO - Executing query: 
+UPDATE dbo.CustomerFeedback
+SET FeedbackDate =  '2024-06-09'
+WHERE  CustomerID = 101
+
+2024-06-13 19:10:24,654 - INFO - SQL query executed successfully.
+2024-06-13 19:10:24,654 - INFO - Database connection closed after executing SQL.
+2024-06-13 19:10:24,654 - INFO - SQL query updated successfully
+2024-06-13 19:10:24,661 - INFO - Attempting to connect to the database for executing SQL.
+2024-06-13 19:10:24,662 - INFO - Executing query: 
+DELETE FROM dbo.CustomerFeedback
+WHERE  CustomerID = 105
+
+2024-06-13 19:10:24,662 - INFO - SQL query executed successfully.
+2024-06-13 19:10:24,662 - INFO - Database connection closed after executing SQL.
+2024-06-13 19:10:24,662 - INFO - SQL query deleted succesfully
+2024-06-13 19:10:24,669 - INFO - Attempting to unzip file
+2024-06-13 19:10:24,703 - INFO - File unzipped successfully.
+2024-06-13 19:10:24,852 - INFO - Attempting to connect to the database for executing SQL.
+2024-06-13 19:10:24,852 - INFO - Executing query: 
+    CREATE TABLE dbo.ProductReviews (
+        id VARCHAR(50) PRIMARY KEY,
+        asins VARCHAR(50),
+        brand VARCHAR(50),
+        categories VARCHAR(100),
+        colors VARCHAR(50),
+        dateAdded DATETIME,
+        dateUpdated DATETIME,
+        dimension VARCHAR(50),
+        ean VARCHAR(50),
+        [keys] VARCHAR(100),
+        manufacturer VARCHAR(50),
+        manufacturerNumber VARCHAR(50),
+        name VARCHAR(100),
+        prices VARCHAR(500),  
+        [reviews.date] DATETIME,
+        [reviews.doRecommend] INT,
+        [reviews.numHelpful] INT,
+        [reviews.rating] INT,
+        [reviews.sourceURLs] VARCHAR(MAX),
+        [reviews.text] VARCHAR(MAX), 
+        [reviews.title] VARCHAR(100),
+        [reviews.userCity] VARCHAR(50),
+        [reviews.userProvince] VARCHAR(50),
+        [reviews.username] VARCHAR(50),
+        sizes VARCHAR(50),
+        upc VARCHAR(50),
+        weight VARCHAR(50)
+    )
+    
+2024-06-13 19:10:24,861 - ERROR - Error executing query: ('42S01', "[42S01] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]There is already an object named 'ProductReviews' in the database. (2714) (SQLExecDirectW)")
+2024-06-13 19:10:24,861 - INFO - Database connection closed after executing SQL.
+2024-06-13 19:10:24,861 - INFO - SQL query executed successfully
+2024-06-13 19:10:24,861 - INFO - Attempting to connect to the database for uploading data.
+2024-06-13 19:10:24,861 - INFO - Uploading data to table: ProductReviews
+2024-06-13 19:10:31,477 - INFO - Data uploaded successfully to ProductReviews.
+2024-06-13 19:10:31,477 - INFO - Data inserted successfully.
+2024-06-13 19:10:31,477 - INFO - Attempting to connect to the database for retrieving data.
+2024-06-13 19:10:31,477 - INFO - Retrieving data with query: 
+SELECT  ProductID, SUM(OrderQty) AS TotalOrder, SUM(LineTotal) AS TotalSales
+FROM Sales.SalesOrderDetail
+WHERE YEAR(ModifiedDate) = 2014
+GROUP BY ProductID
+ORDER BY TotalOrder
+
+2024-06-13 19:10:31,624 - INFO - Data retrieved successfully.
+2024-06-13 19:10:31,624 - INFO - Data retrieved successfully.
+2024-06-13 19:10:31,676 - INFO - Data exported to CSV successfully.
